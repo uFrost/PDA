@@ -1,4 +1,4 @@
-package chat;
+
 
 import java.util.Properties;
 
