@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -11,7 +12,9 @@ public class TAListener extends JTextArea {
 	public TAListener(String name){
 		
 		this.setEditable(false);
-		this.setBackground(new Color(60, 60, 60));
+		this.setBackground(new Color(80, 80, 80));
+		this.setForeground(new Color(200, 200, 200));
+		this.setMaximumSize(new Dimension(120,25));
 		
 		this.setText(name);
 		
@@ -22,7 +25,8 @@ public class TAListener extends JTextArea {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			System.out.println("hey");
+			//PUT SOME SELECTION STUFF HERE, UPDATE TEXT WITH THE TEXT FROM THAT PERSON, CHANGE COLOR
+			
 		}
 
 		@Override
@@ -51,6 +55,11 @@ public class TAListener extends JTextArea {
 		
 		
 		
+	}
+	
+	public void selectThis(JTextArea m){
+		m.setBackground(new Color(100, 80, 80));
+		m.setForeground(new Color(200, 200, 200));
 	}
 	
 }

@@ -1,7 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -11,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 
 public class Window extends JFrame {
@@ -33,8 +33,12 @@ public class Window extends JFrame {
 		this.add(chat, BorderLayout.CENTER);
 		this.add(chatInput, BorderLayout.SOUTH);
 		
+		//UpdatePeople(new String[]{"Little Johny","Poor Susan","Michael Jackson's Kid","Some Other Fatso","I guess","Nah she's mean","Nice 'stache!","I *COULD*..","Conversationalist","Bore","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest"});
 		UpdatePeople(new String[]{"Little Johny","Poor Susan","Michael Jackson's Kid"});
-		this.add(kiddieHolder, BorderLayout.WEST);
+		
+		 scroll = new JScrollPane(kiddieHolder);
+		
+		this.add(scroll, BorderLayout.WEST);
 		
 		pack();
 		setVisible(true);
@@ -58,8 +62,12 @@ public class Window extends JFrame {
 	}
 	
 	void UpdatePeople(String[] newPeople){
-		
-		
+		JTextPane a = new JTextPane();
+		a.setText("Chat with:");
+		a.setEditable(false);
+		a.setBackground(new Color(40, 40, 40));
+		a.setForeground(new Color(200, 200, 200));
+		kiddieHolder.add(a);
 		for(String x: newPeople){			
 			kiddieHolder.add(new TAListener(x));
 		}
