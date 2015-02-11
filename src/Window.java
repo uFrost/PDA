@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -21,8 +22,9 @@ public class Window extends JFrame {
 	JPanel kiddieHolder = new JPanel(){{this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));}};
 	JScrollPane scroll = new JScrollPane();
 	
+	
 	public Window(){
-		
+	
 		super("\"I'd date me\" - Jacob Freeland");
 		
 		setLocationRelativeTo(null);
@@ -33,10 +35,9 @@ public class Window extends JFrame {
 		this.add(chat, BorderLayout.CENTER);
 		this.add(chatInput, BorderLayout.SOUTH);
 		
-		//UpdatePeople(new String[]{"Little Johny","Poor Susan","Michael Jackson's Kid","Some Other Fatso","I guess","Nah she's mean","Nice 'stache!","I *COULD*..","Conversationalist","Bore","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest","The Rest"});
 		UpdatePeople(new String[]{"Little Johny","Poor Susan","Michael Jackson's Kid"});
 		
-		 scroll = new JScrollPane(kiddieHolder);
+		 scroll = new JScrollPane(kiddieHolder,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		this.add(scroll, BorderLayout.WEST);
 		

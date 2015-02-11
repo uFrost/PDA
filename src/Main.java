@@ -1,10 +1,13 @@
 
 public class Main {
 
+	public static Window window;
+	static PixDumpWindow p;
+	
 	public static void main(String args[]){
 		
-		PixDumpWindow p = new PixDumpWindow();
-		Window window = new Window();
+		p = new PixDumpWindow();
+		window = new Window();
 		
 		
 	}
