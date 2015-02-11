@@ -16,9 +16,11 @@ public class PixDumpWindow extends JFrame {
 		try {
 			Properties props = new Properties();
                         
-			props.put("enabledBackgroundColor", "255 255 255");
+			props.put("inputBackgroundColor", "50 50 50");
+			props.put("inputForegroundColor", "200 200 200");
+			props.put("enabledBackgroundColor", "50 50 50");
 			
-            props.put("selectionBackgroundColor", "200 10 10"); 
+            props.put("selectionBackgroundColor", "20 20 20"); 
             props.put("menuSelectionBackgroundColor", "10 10 10"); 
             
             
