@@ -17,14 +17,13 @@ public class PeoplePanel extends JPanel{
 		JTextPane a = new JTextPane();
 		a.setText("Chat with:");
 		a.setEditable(false);
-		a.setBackground(new Color(40, 40, 40));
+		a.setBackground(new Color(30, 30, 30));
 		a.setForeground(new Color(200, 200, 200));
 		a.setMaximumSize(new Dimension(120,35));
 		this.add(a);
 		UpdatePeople(new String[]{"Little Johny","Some Bitch Named DelTris","Valentina Lisitsa","Mark Mothersbaugh","Joachim Witt ","Poor Susan","Michael Jackson's Kid"});
 		notFrom.add("Little Johny");
 		notFrom.add("Poor Susan");
-		
 		TAListener.highlightUpdate();
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 	}
