@@ -15,7 +15,7 @@ public class TAListener extends JTextArea {
 	public TAListener(String name){
 		
 		this.setEditable(false);
-		this.setBackground(new Color(80, 80, 80));
+		this.setBackground(new Color(55, 55, 55));
 		this.setForeground(new Color(200, 200, 200));
 		this.setMaximumSize(new Dimension(120,35));
 		this.setLineWrap(true);
@@ -32,10 +32,12 @@ public class TAListener extends JTextArea {
 		
 			//UpdateChat
 			selectThis((JTextArea)e.getComponent());
+			highlightUpdate();
 			for(String x: Main.window.p.notFrom){
 				
 				if(((JTextArea)e.getComponent()).getText().equals(x)){
 					PeoplePanel.notFrom.remove(x);
+					selectThis((JTextArea)e.getComponent());
 					highlightUpdate();
 					break;
 				}
@@ -80,7 +82,7 @@ public class TAListener extends JTextArea {
 		for(JTextArea x: contactList){
 			if(!(x.getText().equals(m.getText()))){
 				
-				x.setBackground(new Color(80, 80, 80));
+				x.setBackground(new Color(55, 55, 55));
 				x.setForeground(new Color(200, 200, 200));
 			}
 		}
