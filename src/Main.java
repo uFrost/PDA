@@ -1,5 +1,4 @@
 import FBUtils.FireBaseUtils;
-package Base;
 
 public class Main {
 
