@@ -1,3 +1,4 @@
+package UI;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
@@ -5,6 +6,8 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JTextArea;
+
+import Base.Main;
 
 
 public class TAListener extends JTextArea {
@@ -27,9 +30,10 @@ public class TAListener extends JTextArea {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-			//PUT SOME SELECTION STUFF HERE, UPDATE TEXT WITH THE TEXT FROM THAT PERSON, CHANGE COLOR
+		
+			//UpdateChat
 			selectThis((JTextArea)e.getComponent());
+			//IF IS ON "NEW MESSAGE" LIST, REMOVE
 			
 		}
 
@@ -68,7 +72,7 @@ public class TAListener extends JTextArea {
 		
 		for(JTextArea x: list){
 			if(!(x.getText().equals(m.getText()))){
-				System.out.println(x.getText());
+				
 				x.setBackground(new Color(80, 80, 80));
 				x.setForeground(new Color(200, 200, 200));
 			}
