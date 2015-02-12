@@ -10,20 +10,26 @@ import com.firebase.client.ValueEventListener;
 public class FireBaseUtils {
 
 	static Firebase firebase = new Firebase("https://pda.firebaseio.com/");
-	
-	static String chatName;
-	
+
+	public static String chatName;
+
 	public static long count;
+
+	public static String myName;
 	
-	public static void setChat(String name1, String name2){	
-		chatName =(name1.compareTo(name2)==1) ? (name1+name2):(name2+name1);	
+	public static void setChat( String name2) {
+		getChildCount();
+		// Main.window.c.removeAll();
+		chatName = (myName.compareTo(name2) == 1) ? (myName + name2)
+				: (name2 + myName);
+
 	}
-	
-	public static void SendMessage(String data){
-	
-			
-		firebase.child("Chats").child(chatName).child(""+(count+1)).setValue(data);
-		
+
+	public static void SendMessage(String data) {
+
+		firebase.child("Chats").child(chatName).child("" + (++count ))
+				.setValue(data);
+
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
@@ -31,37 +37,39 @@ public class FireBaseUtils {
 			e.printStackTrace();
 		}
 	}
-	public static void receiveMessage(){
-	firebase.child("Chats").child(chatName).addValueEventListener(new ValueEventListener() {
-		@Override
-		public void onDataChange(DataSnapshot snapshot) {
-			 System.out.println(snapshot.getValue());
-		
-		
-		}
 
-		@Override
-		public void onCancelled(FirebaseError arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-	});
+	public static void receiveMessage() {
+		firebase.child("Chats").child(chatName)
+				.addValueEventListener(new ValueEventListener() {
+					@Override
+					public void onDataChange(DataSnapshot snapshot) {
+						System.out.println(snapshot.getValue());
+						// Main.window.c.UpdateChat(snapshot.getValue());
+					}
+
+					@Override
+					public void onCancelled(FirebaseError arg0) {
+						// TODO Auto-generated method stub
+
+					}
+				});
 	}
-	public static long getChildCount(){
-		
-		firebase.child(chatName).addValueEventListener(new ValueEventListener() {
-		   @Override
-		   public void onDataChange(DataSnapshot snapshot) {
-		    count = snapshot.getChildrenCount();
-		   }
 
-		   @Override
-		   public void onCancelled(FirebaseError arg0) {
-		    // TODO Auto-generated method stub
-		    
-		   }
-		  });
-		return count;
-		 }
-	
+	public static void getChildCount() {
+
+		firebase.child("Chats").child(chatName).addValueEventListener(
+				new ValueEventListener() {
+					@Override
+					public void onDataChange(DataSnapshot snapshot) {
+						count = snapshot.getChildrenCount();
+					}
+
+					@Override
+					public void onCancelled(FirebaseError arg0) {
+						// TODO Auto-generated method stub
+
+					}
+				});
+	}
+
 }
