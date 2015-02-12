@@ -31,7 +31,14 @@ public class TAListener extends JTextArea {
 		
 			//UpdateChat
 			selectThis((JTextArea)e.getComponent());
-			//IF IS ON "NEW MESSAGE" LIST, REMOVE
+			for(String x: Main.window.n.notFrom){
+				System.out.println(x == ((JTextArea)e.getComponent()).getText());
+				
+				if(((JTextArea)e.getComponent()).getText()==x){
+					Main.window.n.notFrom.remove(x);
+				}
+			}
+			Main.window.n.UpdateNotPanel();
 			
 		}
 
