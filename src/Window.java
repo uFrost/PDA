@@ -1,6 +1,9 @@
+package UI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -16,13 +19,14 @@ import javax.swing.JTextPane;
 
 public class Window extends JFrame {
 
-	static boolean focus = false;
-	JTextArea chatInput = new JTextArea();
 	JTextField chat = new JTextField();
-	JPanel kiddieHolder = new JPanel(){{this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));}};
 	JScrollPane scroll = new JScrollPane();
 	
+	ChatInput CI = new ChatInput();
+	PeoplePanel p = new PeoplePanel();
+	JPanel newMessagePage = new JPanel(){{this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));}};
 	
+		
 	public Window(){
 	
 		super("\"I'd date me\" - Jacob Freeland");
@@ -33,47 +37,18 @@ public class Window extends JFrame {
 		this.setPreferredSize(new Dimension(550,530));
 		
 		this.add(chat, BorderLayout.CENTER);
-		this.add(chatInput, BorderLayout.SOUTH);
+		this.add(CI, BorderLayout.SOUTH);
 		
-		UpdatePeople(new String[]{"Little Johny","Poor Susan","Michael Jackson's Kid"});
-		
-		 scroll = new JScrollPane(kiddieHolder,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		
+		scroll = new JScrollPane(p,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		this.add(scroll, BorderLayout.WEST);
+		
+		scroll = new JScrollPane(newMessagePage,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		this.add(scroll, BorderLayout.EAST);
 		
 		pack();
 		setVisible(true);
 		
-		this.addWindowFocusListener(new WindowAdapter() {
-			
-			public void windowGainedFocus(WindowEvent e){
-				focus = true;
-			}
-		
-			public void windowLostFocus(WindowEvent e) {
-	   		 	focus = false;
-			}
-	    });
-		
 	}
 	
-	
-	void UpdateChat(String newChat){
-		chat.setText(newChat);
-	}
-	
-	void UpdatePeople(String[] newPeople){
-		JTextPane a = new JTextPane();
-		a.setText("Chat with:");
-		a.setEditable(false);
-		a.setBackground(new Color(40, 40, 40));
-		a.setForeground(new Color(200, 200, 200));
-		kiddieHolder.add(a);
-		for(String x: newPeople){			
-			kiddieHolder.add(new TAListener(x));
-		}
-		
-		
-	}
 	
 }
