@@ -10,18 +10,19 @@ import javax.swing.JTextArea;
 
 public class TAListener extends JTextArea {
 
-	static ArrayList<JTextArea> list = new ArrayList<JTextArea>(); 
+	static ArrayList<JTextArea> contactList = new ArrayList<JTextArea>(); 
 	
 	public TAListener(String name){
 		
 		this.setEditable(false);
 		this.setBackground(new Color(80, 80, 80));
 		this.setForeground(new Color(200, 200, 200));
-		this.setMaximumSize(new Dimension(120,25));
+		this.setMaximumSize(new Dimension(120,35));
+		this.setLineWrap(true);
 		
 		this.setText(name);
 		
-		list.add(this);
+		contactList.add(this);
 		
 		
 		this.addMouseListener(new MouseListener(){
@@ -31,14 +32,15 @@ public class TAListener extends JTextArea {
 		
 			//UpdateChat
 			selectThis((JTextArea)e.getComponent());
-			for(String x: Main.window.n.notFrom){
-				System.out.println(x == ((JTextArea)e.getComponent()).getText());
+			for(String x: Main.window.p.notFrom){
 				
-				if(((JTextArea)e.getComponent()).getText()==x){
-					Main.window.n.notFrom.remove(x);
+				if(((JTextArea)e.getComponent()).getText().equals(x)){
+					PeoplePanel.notFrom.remove(x);
+					highlightUpdate();
+					break;
 				}
 			}
-			Main.window.n.UpdateNotPanel();
+			
 			
 		}
 
@@ -75,7 +77,7 @@ public class TAListener extends JTextArea {
 		m.setBackground(new Color(200, 40, 40));
 		m.setForeground(new Color(200, 200, 200));
 		
-		for(JTextArea x: list){
+		for(JTextArea x: contactList){
 			if(!(x.getText().equals(m.getText()))){
 				
 				x.setBackground(new Color(80, 80, 80));
@@ -83,6 +85,18 @@ public class TAListener extends JTextArea {
 			}
 		}
 		
+	}
+	
+	public static void highlightUpdate(){
+		
+		for(JTextArea x: contactList){
+			for(String y: PeoplePanel.notFrom){
+				if((y.equals(x.getText()))){
+					x.setBackground(new Color(100, 100, 100));
+					x.setForeground(new Color(200, 200, 200));
+				}
+			}
+		}
 	}
 	
 }
