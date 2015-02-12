@@ -3,7 +3,7 @@
 public class StartupMessages {
 
 
-	String[] StartupMessages = new String[]{
+	public static String[] StartupMessages = new String[]{
 			
 			
 			"\"I'd date me\" - Jacob Freeland",

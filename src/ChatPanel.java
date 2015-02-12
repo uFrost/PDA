@@ -11,14 +11,14 @@ public class ChatPanel extends JPanel{
 		text.setBackground(new Color(40, 40, 40));
 		text.setForeground(new Color(200, 200, 200));
 		
-		if(newThing.startsWith(FireBaseUtils.myName()){
+		/*if(newThing.startsWith(FireBaseUtils.myName()){
 			text.setAlignmentX(RIGHT_ALIGNMENT);
 		}
 		else{
 			text.setAlignmentX(LEFT_ALIGNMENT);
 		}
 		
-		this.add(text);
+		this.add(text);*/
 	}
 	
 	
