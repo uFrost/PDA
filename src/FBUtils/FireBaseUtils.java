@@ -1,7 +1,5 @@
 package FBUtils;
 
-import java.io.IOException;
-
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -9,25 +7,33 @@ import com.firebase.client.ValueEventListener;
 
 public class FireBaseUtils {
 
-	static Firebase firebase = new Firebase("https://pda.firebaseio.com/");
+	static Firebase firebase;
 
 	public static String chatName;
 
 	public static long count;
 
-	public static String myName;
-	
-	public static void setChat( String name2) {
-		getChildCount();
+	public static String myName = "test";
+
+	public static void init() {
+		firebase = new Firebase("https://pda.firebaseio.com/");
+		
+	}
+
+	public static void setChat(String name2) {
+
 		// Main.window.c.removeAll();
 		chatName = (myName.compareTo(name2) == 1) ? (myName + name2)
 				: (name2 + myName);
+		
+		
+	
 
 	}
 
 	public static void SendMessage(String data) {
-
-		firebase.child("Chats").child(chatName).child("" + (++count ))
+		getChildCount();
+		firebase.child("Chats").child(chatName).child("" + (count))
 				.setValue(data);
 
 		try {
@@ -36,6 +42,7 @@ public class FireBaseUtils {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	
 	}
 
 	public static void receiveMessage() {
@@ -56,9 +63,9 @@ public class FireBaseUtils {
 	}
 
 	public static void getChildCount() {
-
-		firebase.child("Chats").child(chatName).addValueEventListener(
-				new ValueEventListener() {
+	
+		firebase.child("Chats").child(chatName)
+				.addValueEventListener(new ValueEventListener() {
 					@Override
 					public void onDataChange(DataSnapshot snapshot) {
 						count = snapshot.getChildrenCount();
@@ -70,6 +77,12 @@ public class FireBaseUtils {
 
 					}
 				});
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

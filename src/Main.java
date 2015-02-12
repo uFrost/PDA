@@ -9,7 +9,9 @@ public class Main {
 		
 		p = new PixDumpWindow();
 		window = new Window();
-	
+		FireBaseUtils.init();
+		FireBaseUtils.setChat("test2");
+		FireBaseUtils.SendMessage("testing 2");
 		
 	}
 	
