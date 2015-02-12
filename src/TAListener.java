@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 import javax.swing.JTextArea;
 
-import Base.Main;
-
 
 public class TAListener extends JTextArea {
 
