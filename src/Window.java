@@ -17,7 +17,6 @@ public class Window extends JFrame {
 	
 	ChatInput CI = new ChatInput();
 	PeoplePanel p = new PeoplePanel();
-	NotPanel n = new NotPanel();
 	
 		
 	public Window(){
@@ -35,8 +34,7 @@ public class Window extends JFrame {
 		scroll = new JScrollPane(p,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		this.add(scroll, BorderLayout.WEST);
 		
-		scroll = new JScrollPane(n,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		this.add(scroll, BorderLayout.EAST);
+	
 		
 		pack();
 		setVisible(true);
