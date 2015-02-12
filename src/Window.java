@@ -1,20 +1,13 @@
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 
 
 public class Window extends JFrame {
@@ -29,7 +22,7 @@ public class Window extends JFrame {
 		
 	public Window(){
 	
-		super("\"I'd date me\" - Jacob Freeland");
+		super(StartupMessages.StartupMessages[new Random().nextInt(StartupMessages.StartupMessages.length)]);
 		
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
